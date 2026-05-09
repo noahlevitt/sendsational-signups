@@ -1,0 +1,9 @@
+{
+  "name": "Sendsational Offline Sign-Ups",
+  "short_name": "Sendsational",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff7a00",
+  "icons": []
+}
