@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ff7a00" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Sendsational Offline Sign-Ups</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 24px;
+    }
+    .app {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.12);
+      padding: 24px;
+    }
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .logo-wrap img {
+      max-height: 56px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      margin: 0 0 24px;
+    }
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .grid-1, .grid-2, .grid-3 {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-1 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 16px;
+      font-size: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .primary {
+      border: 0;
+      border-radius: 12px;
+      background: #ff7a00;
+      color: #fff;
+      font-size: 34px;
+      font-weight: 900;
+      padding: 28px;
+      cursor: pointer;
+    }
+    .secondary-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .secondary {
+      border: 1px solid #ccc;
+      background: #f1f1f1;
+      color: #222;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .queue {
+      margin-top: 28px;
+    }
+    .queue h2 {
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 560px;
+      padding: 24px;
+    }
+    .modal textarea {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 180px;
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (max-width: 800px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      h1 { font-size: 30px; }
+      .primary { font-size: 28px; padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="logo-wrap">
+      <img src="https://files.sendsationaltext.com/image/2023/FL-01D7B495-7F20-4CB8-9C84-D558ECC1BDA2.png" alt="Sendsational Logo">
+    </div>
+
+    <h1>START YOUR FREE TRIAL</h1>
+
+    <div class="status-bar">
+      <div id="networkStatus">Offline</div>
+      <div id="pendingCount">Pending: 0</div>
+      <div id="lastSync">Last Sync: Never</div>
+    </div>
+
+    <div class="grid-1">
+      <div>
+        <label for="businessName">Name of your Business</label>
+        <input id="businessName" type="text">
+      </div>
+      <div>
+        <label for="yourName">Your Name</label>
+        <input id="yourName" type="text">
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div>
+        <label for="phone">Cell Phone #</label>
+        <input id="phone" type="tel" inputmode="numeric" maxlength="17">
+      </div>
+      <div>
+        <label for="locations"># of Locations</label>
+        <input id="locations" type="tel" inputmode="numeric">
+      </div>
+      <div>
+        <label for="zipCode">ZIP of Any Store</label>
+        <input id="zipCode" type="tel" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email">
+      </div>
+      <div>
+        <label for="yearsInBusiness"># of Years in Business</label>
+        <input id="yearsInBusiness" type="tel" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="acceptBtn">ACCEPT FREE TRIAL</button>
+      <div class="secondary-row">
+        <button class="secondary" id="notesBtn">NOTES</button>
+        <button class="secondary" id="enterBtn">ENTER</button>
+        <button class="secondary" id="syncBtn">SYNC NOW</button>
+      </div>
+    </div>
+
+    <div class="message" id="message"></div>
+
+    <div class="queue">
+      <h2>Queued Records</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Business</th>
+            <th>Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="queueBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="notesModal">
+    <div class="modal">
+      <h2>Notes</h2>
+      <textarea id="notesText"></textarea>
+      <div class="modal-buttons">
+        <button class="secondary" id="cancelNotesBtn">Cancel</button>
+        <button class="secondary" id="saveNotesBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
