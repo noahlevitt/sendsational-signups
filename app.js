@@ -1,4 +1,4 @@
-const API_URL = '';
+const API_URL = 'https://script.google.com/macros/s/AKfycbyJGI0QMZxC-uLu2bQy_dWYnDH8SR7cDAqR1f1Afr6iJMG14yjx7D_LsYczqAASwzrx/exec';
 const DB_NAME = 'sendsational-signups';
 const STORE_NAME = 'submissions';
 let savedNotes = '';
